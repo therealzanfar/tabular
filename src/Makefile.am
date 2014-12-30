@@ -1,2 +1,5 @@
-bin_PROGRAMS = tab
-tab_SOURCES = tab.c tabular.c
+bin_PROGRAMS = tabular
+
+tabular_SOURCES = tabular.c tab_field.c
+tabular_LDADD = -lm
+
