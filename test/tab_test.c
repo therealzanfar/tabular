@@ -27,25 +27,27 @@ struct field_parse_triad field_tests[] = {
 static char * test_field_parse (void)
 {
 	size_t				ix;
-	/* char*					msg = malloc (255 * sizeof(char)); */
+	char*					msg = malloc (255 * sizeof(char));
 	tab_field_t*	f = tab_field_create (0);
 	
 	for (ix=0; ix<FIELD_TESTS_LEN; ix++)
 	{
 		tab_field_set_string_value (f, field_tests[ix].value_string);
 
+		sprintf(msg, "error, tab_field_set_string_value did not correctly parse '%s' into a floating point value", field_tests[ix].value_string);
 		mu_assert(
-			"error, tab_field_set_string_value did not correctly parse string into a floating point value",
+			msg,
 			tab_field_get_float_value (f) == field_tests[ix].value_float
 		);
 
+		sprintf(msg, "error, tab_field_set_string_value did not correctly parse '%s' into a integer value", field_tests[ix].value_string);
 		mu_assert(
-			"error, tab_field_set_string_value did not correctly parse string into a integer value",
+			msg,
 			tab_field_get_integer_value (f) == field_tests[ix].value_integer
 		);
 	}
 
-	tab_field_destroy (f);
+	if (msg) free(msg);
 	return 0;
 }
 

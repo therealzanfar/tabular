@@ -44,9 +44,10 @@ tab_field_initialize (tab_field_t* f, const char* val)
 
 		if (f->_datatype == TAB_INTEGER)
 			f->_value_integer	= p->_value_integer;
+
+		free(p);
 	}
 
-	free(p);
 	return true;
 }
 
@@ -76,7 +77,7 @@ void
 tab_field_destroy (tab_field_t* f)
 {
 	tab_field_terminate (f);
-	free (f);
+	if (f) free (f);
 }
 
 tab_dt_t
