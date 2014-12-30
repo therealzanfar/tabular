@@ -1,12 +1,25 @@
-# http://www.gnu.org/software/automake
+Makefile
 Makefile.in
 
-# http://www.gnu.org/software/autoconf
-/autom4te.cache
-/aclocal.m4
-/compile
-/configure
-/depcomp
-/install-sh
-/missing
-/stamp-h1
+config.log
+config.status
+config.h.in
+
+configure
+
+autom4te.cache
+aclocal.m4
+compile
+depcomp
+install-sh
+missing
+stamp-h1
+.deps
+.dirstamp
+test-driver
+
+*.swp
+*.o
+*.log
+*.trs
+
